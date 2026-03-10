@@ -1,6 +1,19 @@
 # color util for colored logging
 # this file works like colorama but with more colors and gradient support
 
+# Usage Examples:
+
+# log(Color.RED, "Error:", "Something went wrong")
+
+# gradient_log((255, 0, 0), (0, 0, 255), "Horizontal gradient")
+
+# gradient_log(
+#     (0, 255, 0),
+#     (0, 0, 255),
+#     "Line 1\nLine 2\nLine 3",
+#     vert=True
+# )
+
 import sys
 import os
 import math
