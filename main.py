@@ -23,6 +23,7 @@ import random
 import json
 import sys
 import traceback
+from utils.color import Color, gradient_text, gradient_log
 
 # ============================
 #  Bot Setup Functions
@@ -32,3 +33,35 @@ def get_prefix(bot, message):
     if prefix is None:
         prefix = "!"
     return prefix
+
+def print_disclaimer():
+    gradient_log(
+        (255, 0, 0), 
+        (0, 0, 255), 
+        """
+╭──────────────────────────────╮
+│ Disclaimer:                  │
+│  SelfBots are against the    │
+│  Discord ToS and can get     │
+│  your account termed and/or  │
+│  suspended.                  │
+│                              │
+│  The developers of this bot  │
+│  are not responsible for     │
+│  any damage caused by this   │
+│  bot.                        │
+╰──────────────────────────────╯
+        """
+    )
+
+# ============================
+#  Bot Setup
+# ============================
+
+
+
+
+
+
+
+print_disclaimer()
