@@ -34,6 +34,9 @@ def get_prefix(bot, message):
         prefix = "!"
     return prefix
 
+def clear_console():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def print_disclaimer():
     gradient_log(
         (255, 0, 0), 
@@ -53,6 +56,9 @@ def print_disclaimer():
 ╰──────────────────────────────╯
         """
     )
+    # Wait for user input
+    input("Press Enter to continue...")
+    clear_console()
 
 # ============================
 #  Bot Setup
