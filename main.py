@@ -129,12 +129,12 @@ async def load_cogs(bot):
 
 def create_bot():
     """Create and configure the bot instance."""
-    intents = discord.Intents.default()
-    intents.message_content = True
+    # intents = discord.Intents.default()
+    # intents.message_content = True
     
     bot = commands.Bot(
         command_prefix=get_prefix,
-        intents=intents,
+        # intents=intents,
         self_bot=True,
         help_command=None  # Disable default help
     )
