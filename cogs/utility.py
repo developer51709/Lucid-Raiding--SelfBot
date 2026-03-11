@@ -180,16 +180,13 @@ class Utility(commands.Cog):
         except discord.Forbidden:
             pass
         
-        embed = discord.Embed(
-            title="Lucid Raiding™ SelfBot v1.0",
-            color=discord.Color.blue()
-        )
-        embed.add_field(name="User", value=self.bot.user, inline=False)
-        embed.add_field(name="ID", value=self.bot.user.id, inline=False)
-        embed.add_field(name="Guilds", value=len(self.bot.guilds), inline=False)
-        embed.add_field(name="Latency", value=f"{round(self.bot.latency * 1000)}ms", inline=False)
+        info_text = "「Lucid Raiding™ SelfBot v1.0」\n\n"
+        info_text += f"⪼ User: {self.bot.user}\n"
+        info_text += f"⪼ ID: {self.bot.user.id}\n"
+        info_text += f"⪼ Guilds: {len(self.bot.guilds)}\n"
+        info_text += f"⪼ Latency: {round(self.bot.latency * 1000)}ms\n"
         
-        await ctx.send(embed=embed)
+        await ctx.send(f"```\n{info_text}\n```")
 
 async def setup(bot):
     """Setup function to load this cog."""
