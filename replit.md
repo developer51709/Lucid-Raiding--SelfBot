@@ -50,7 +50,8 @@ Environment variables override config.json settings.
 - **Status management:** Auto-sets bot presence/activity on startup
 - **Async event handlers:** Ready, command, command_error events with logging
 - **Colored logging:** All bot events logged with gradients via `utils.color`
-- **Example commands:** `!ping`, `!help_custom` in core.py
+- **Custom help command:** `!help` — Shows all commands with custom formatting, `!help [command]` — Shows specific command details
+- **Core commands:** `!ping` — Show latency, `!help` — Display command help
 - **Startup validation:** Validates config and token before connecting
 - **Detailed startup info:** Prints connection time, guild count, and config on ready
 
