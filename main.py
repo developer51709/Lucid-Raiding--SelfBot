@@ -9,7 +9,7 @@
 - 𝙶𝚒𝚝𝙷𝚞𝚋:
 https://github.com/developer51709/Lucid-Raiding--SelfBot
 - 𝙳𝚒𝚜𝚌𝚘𝚛𝚍:
-
+https://discord.gg/k7DWBCsRHC
 ───────────────────────────
 """
 
