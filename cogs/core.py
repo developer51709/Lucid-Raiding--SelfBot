@@ -18,11 +18,20 @@ class Core(commands.Cog):
         latency = round(self.bot.latency * 1000)
         gradient_log((0, 255, 0), (0, 255, 0), f"[COMMAND] {ctx.author} used ping")
         await ctx.send(f"Pong! {latency}ms")
+        try:
+            await ctx.message.delete()
+        except discord.Forbidden:
+            pass
     
     @commands.command(name="help", help="Show command help")
     async def help_command(self, ctx, command_name: str = None):
         """Display help for commands in custom format."""
         gradient_log((0, 255, 0), (0, 255, 0), f"[COMMAND] {ctx.author} used help")
+        
+        try:
+            await ctx.message.delete()
+        except discord.Forbidden:
+            pass
         
         # If a specific command is requested
         if command_name:
