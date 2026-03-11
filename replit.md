@@ -16,7 +16,8 @@ utils/
   color.py           # Terminal color/gradient utilities (Color class, gradient_text, gradient_log)
 cogs/                # Modular command cogs
   __init__.py        # Package init
-  core.py            # Core commands (ping, help_custom)
+  core.py            # Core commands (ping, help)
+  utility.py         # Utility commands (status, username, nick, ghostping, spam, clear, avatar, about)
 requirements.txt     # discord.py-self
 pyproject.toml       # Project metadata
 ```
@@ -52,6 +53,15 @@ Environment variables override config.json settings.
 - **Colored logging:** All bot events logged with gradients via `utils.color`
 - **Custom help command:** `!help` — Shows all commands with custom formatting, `!help [command]` — Shows specific command details
 - **Core commands:** `!ping` — Show latency, `!help` — Display command help
+- **Utility commands:**
+  - `!status <type> <message>` — Change bot status (playing, listening, watching, competing)
+  - `!username <name>` — Change bot username
+  - `!nick <name>` — Change nickname in guild
+  - `!ghostping <user>` — Ghost ping a user (immediate delete)
+  - `!spam <count> <message>` — Spam message (1-100 times)
+  - `!clear <count>` — Delete messages from channel
+  - `!avatar [url]` — Change bot avatar from URL or attachment
+  - `!about` — Show bot information
 - **Startup validation:** Validates config and token before connecting
 - **Detailed startup info:** Prints connection time, guild count, and config on ready
 
