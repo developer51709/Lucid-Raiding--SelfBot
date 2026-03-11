@@ -9,7 +9,9 @@ A Discord selfbot developed by Nyxen and Cursefile.
 
 ## Project Structure
 ```
-main.py              # Entry point: disclaimer, banner, bot setup, cog loader
+main.py              # Entry point: startup logic, cog loader, event handlers
+config.py            # Configuration manager (env vars + config.json)
+config.json          # Bot configuration file
 utils/
   color.py           # Terminal color/gradient utilities (Color class, gradient_text, gradient_log)
 cogs/                # Modular command cogs
@@ -23,14 +25,34 @@ pyproject.toml       # Project metadata
 - **Start application** — `python main.py` (console output)
 
 ## Configuration
-- `PREFIX` environment variable sets the bot command prefix (defaults to `!`)
-- Discord user token is required to run the bot (not yet implemented in main.py)
+Bot settings can be configured via environment variables OR `config.json`:
+
+**Environment Variables:**
+- `DISCORD_TOKEN` — Your Discord user token (required)
+- `PREFIX` — Command prefix (default: `!`)
+- `BOT_STATUS` — Bot status message (default: `Lucid Raiding v1.0`)
+- `ACTIVITY_TYPE` — Activity type: `playing`, `listening`, `watching`, `competing` (default: `playing`)
+
+**config.json:**
+```json
+{
+  "prefix": "!",
+  "status": "Lucid Raiding v1.0",
+  "activity_type": "playing"
+}
+```
+
+Environment variables override config.json settings.
 
 ## Core Features
-- **Modular cog loader:** Automatically loads all cogs from `cogs/` directory
-- **Async event handlers:** Ready event, command error handling
+- **Modular cog loader:** Automatically loads all cogs from `cogs/` directory with detailed logging
+- **Configuration system:** Flexible config via environment variables and `config.json`
+- **Status management:** Auto-sets bot presence/activity on startup
+- **Async event handlers:** Ready, command, command_error events with logging
 - **Colored logging:** All bot events logged with gradients via `utils.color`
 - **Example commands:** `!ping`, `!help_custom` in core.py
+- **Startup validation:** Validates config and token before connecting
+- **Detailed startup info:** Prints connection time, guild count, and config on ready
 
 ## Adding New Cogs
 1. Create a new file in `cogs/` (e.g., `cogs/raid.py`)
