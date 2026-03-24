@@ -88,7 +88,7 @@ class Config:
             )
             return False
         
-        if self.activity_type not in ["playing", "listening", "watching", "competing"]:
+        if self.activity_type not in ["playing", "listening", "watching", "competing", "streaming"]:
             gradient_log(
                 (255, 165, 0),
                 (255, 165, 0),
