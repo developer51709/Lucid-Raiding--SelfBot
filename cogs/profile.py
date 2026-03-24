@@ -84,6 +84,7 @@ class Profile(commands.Cog):
 
     @commands.command(name="bio", aliases=["rbio", "rotatebio"])
     async def biorotate(self, ctx, *, bio_input: str = None):
+        """Enable bio rotation with custom bios or default ones."""
         global bio_task
 
         if bio_task and not bio_task.done():
@@ -103,6 +104,7 @@ class Profile(commands.Cog):
 
     @commands.command(name="stopbio", aliases=["srbio", "stoprbio", "sbio"])
     async def stopbio(self, ctx):
+        """Stop the bio rotation."""
         global bio_task
 
         if bio_task:
@@ -143,6 +145,7 @@ class Profile(commands.Cog):
 
     @commands.command(name="statusrotate", aliases=["rstatus", "rotatestatus"])
     async def status(self, ctx, *, status_input: str = None):
+        """Enable status rotation with custom statuses or default ones."""
         global status_task
         await ctx.message.delete()
 
@@ -163,6 +166,7 @@ class Profile(commands.Cog):
 
     @commands.command(name="stopstatus", aliases=["srstatus", "stoprtatus", "sstatus"])
     async def stopstatus(self, ctx):
+        """Stop the status rotation."""
         global status_task
         await ctx.message.delete()
 
@@ -232,6 +236,7 @@ class Profile(commands.Cog):
 
     @commands.command(name="stopstream", aliases=["srstream", "sstream", "stoprstream"])
     async def stopstream(self, ctx):
+        """Stop the stream rotation."""
         if self.streaming_task and not self.streaming_task.done():
             self.streaming_task.cancel()
 
@@ -253,6 +258,7 @@ class Profile(commands.Cog):
 
     @commands.command(name="hypesquad", aliases=["hs", "hsquad"])
     async def hypesquad(self, ctx, house: str):
+        """Change your HypeSquad house."""
         house = house.lower()
 
         houses = {
