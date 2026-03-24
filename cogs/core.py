@@ -16,7 +16,6 @@ class Core(commands.Cog):
     async def ping(self, ctx):
         """Respond with pong and latency."""
         latency = round(self.bot.latency * 1000)
-        gradient_log((0, 255, 0), (0, 255, 0), f"[COMMAND] {ctx.author} used ping")
         await ctx.send(f"Pong! {latency}ms")
         try:
             await ctx.message.delete()
@@ -26,8 +25,6 @@ class Core(commands.Cog):
     @commands.command(name="help", help="Show command help")
     async def help_command(self, ctx, command_name: str = None):
         """Display help for commands in custom format."""
-        gradient_log((0, 255, 0), (0, 255, 0), f"[COMMAND] {ctx.author} used help")
-        
         try:
             await ctx.message.delete()
         except discord.Forbidden:
@@ -41,9 +38,9 @@ class Core(commands.Cog):
                 return
             
             # Build help for specific command
-            help_text = f"「Lucid Raiding™ SelfBot v1.0」\n\n"
+            help_text = f"**「Lucid Raiding™ SelfBot v1.0」**\n\n"
             prefix = ctx.clean_prefix
-            help_text += f"⪼ {prefix}{cmd.name}"
+            help_text += f"**⪼** `{prefix}{cmd.name}`"
             
             if cmd.help:
                 help_text += f" — {cmd.help}"
@@ -53,7 +50,7 @@ class Core(commands.Cog):
                 if params:
                     help_text += f"\n\nUsage: {prefix}{cmd.name} {' '.join(f'<{p}>' for p in params)}"
             
-            await ctx.send(f"```\n{help_text}\n```")
+            await ctx.send(f"{help_text}")
             return
         
         # Build help for all commands
@@ -79,18 +76,18 @@ class Core(commands.Cog):
         # Format commands
         prefix = ctx.clean_prefix
         for cmd_name, cmd_help in commands_list:
-            help_text += f"⪼ {prefix}{cmd_name} — {cmd_help}\n"
+            help_text += f"**⪼** `{prefix}{cmd_name}`\n-# {cmd_help}\n"
         
         # Split into chunks if message is too long
         if len(help_text) > 2000:
             chunks = []
-            current_chunk = "「Lucid Raiding™ SelfBot v1.0」\n\n"
+            current_chunk = "**「Lucid Raiding™ SelfBot v1.0」**\n\n"
             
             for cmd_name, cmd_help in commands_list:
-                line = f"⪼ {prefix}{cmd_name} — {cmd_help}\n"
+                line = f"**⪼** `{prefix}{cmd_name}`\n-# {cmd_help}\n"
                 if len(current_chunk) + len(line) > 1900:
                     chunks.append(current_chunk)
-                    current_chunk = "「Lucid Raiding™ SelfBot v1.0」\n\n" + line
+                    current_chunk = "**「Lucid Raiding™ SelfBot v1.0」**\n\n" + line
                 else:
                     current_chunk += line
             
@@ -98,9 +95,9 @@ class Core(commands.Cog):
                 chunks.append(current_chunk)
             
             for chunk in chunks:
-                await ctx.send(f"```\n{chunk}\n```")
+                await ctx.send(f"{chunk}")
         else:
-            await ctx.send(f"```\n{help_text}\n```")
+            await ctx.send(f"{help_text}")
     
     @commands.Cog.listener()
     async def on_message(self, message):
