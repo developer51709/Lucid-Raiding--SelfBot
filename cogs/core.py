@@ -11,6 +11,7 @@ class Core(commands.Cog):
     
     def __init__(self, bot):
         self.bot = bot
+        self.help_banner = "**「ʟᴜᴄɪᴅ ʀᴀɪᴅɪɴɢ™ sᴇʟғʙᴏᴛ ᴠ1.0」**\n\n"
     
     @commands.command(name="ping", help="Show the SelfBot's ping")
     async def ping(self, ctx):
@@ -38,7 +39,7 @@ class Core(commands.Cog):
                 return
             
             # Build help for specific command
-            help_text = f"**「Lucid Raiding™ SelfBot v1.0」**\n\n"
+            help_text = self.help_banner
             prefix = ctx.clean_prefix
             help_text += f"**⪼** `{prefix}{cmd.name}`"
             
@@ -54,7 +55,7 @@ class Core(commands.Cog):
             return
         
         # Build help for all commands
-        help_text = "「Lucid Raiding™ SelfBot v1.0」\n\n"
+        help_text = self.help_banner
         
         # Collect all commands from all cogs
         commands_list = []
@@ -81,13 +82,13 @@ class Core(commands.Cog):
         # Split into chunks if message is too long
         if len(help_text) > 2000:
             chunks = []
-            current_chunk = "**「Lucid Raiding™ SelfBot v1.0」**\n\n"
+            current_chunk = self.help_banner
             
             for cmd_name, cmd_help in commands_list:
                 line = f"**⪼** `{prefix}{cmd_name}`\n-# {cmd_help}\n"
                 if len(current_chunk) + len(line) > 1900:
                     chunks.append(current_chunk)
-                    current_chunk = "**「Lucid Raiding™ SelfBot v1.0」**\n\n" + line
+                    current_chunk = self.help_banner + line
                 else:
                     current_chunk += line
             
