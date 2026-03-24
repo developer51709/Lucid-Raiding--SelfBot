@@ -80,46 +80,6 @@ class Utility(commands.Cog):
         except discord.HTTPException as e:
             await ctx.send(f"Failed to change nickname: {e}")
     
-    @commands.command(name="ghostping", help="Ghost ping a user (delete immediately)")
-    async def ghostping(self, ctx, user: discord.User):
-        """Send a ghost ping to a user (message deletes after mention)."""
-        gradient_log((0, 255, 0), (0, 255, 0), f"[COMMAND] {ctx.author} used ghostping on {user}")
-        
-        try:
-            await ctx.message.delete()
-        except discord.Forbidden:
-            pass
-        
-        try:
-            msg = await ctx.send(f"{user.mention}")
-            await msg.delete()
-        except discord.HTTPException as e:
-            await ctx.send(f"Failed to send ghost ping: {e}")
-    
-    @commands.command(name="spam", help="Spam a message multiple times")
-    async def spam(self, ctx, count: int, *, message: str):
-        """Spam a message multiple times (be careful!)."""
-        gradient_log((0, 255, 0), (0, 255, 0), f"[COMMAND] {ctx.author} used spam ({count}x)")
-        
-        try:
-            await ctx.message.delete()
-        except discord.Forbidden:
-            pass
-        
-        if count < 1 or count > 100:
-            await ctx.send("Count must be between 1 and 100.")
-            return
-        
-        if len(message) > 2000:
-            await ctx.send("Message is too long (max 2000 characters).")
-            return
-        
-        try:
-            for _ in range(count):
-                await ctx.send(message)
-        except discord.HTTPException as e:
-            await ctx.send(f"Failed to spam: {e}")
-    
     @commands.command(name="clear", help="Clear messages from channel")
     async def clear(self, ctx, count: int):
         """Delete messages from the channel."""
