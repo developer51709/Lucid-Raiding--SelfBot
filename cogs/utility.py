@@ -28,6 +28,7 @@ class Utility(commands.Cog):
             "listening": discord.ActivityType.listening,
             "watching": discord.ActivityType.watching,
             "competing": discord.ActivityType.competing,
+            "streaming": discord.ActivityType.streaming,
         }
         
         if activity_type not in activity_map:
