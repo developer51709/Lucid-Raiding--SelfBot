@@ -175,8 +175,9 @@ class Profile(commands.Cog):
             status_task = None
             await ctx.send("Status rotator stopped", delete_after=5)
 
-    @commands.command(name="stream", aliases=["rstream", "rotatestream"])
+    @commands.command(name="streamrotate", aliases=["rstream", "rotatestream"])
     async def autostream(self, ctx, *, args: str = None):
+        """Enable stream rotation with custom titles or default ones."""
         interval = 15
         title_list = DEFAULT_TITLES.copy()
 
