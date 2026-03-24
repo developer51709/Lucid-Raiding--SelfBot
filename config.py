@@ -13,7 +13,7 @@ class Config:
     
     # Defaults
     DEFAULT_PREFIX = "!"
-    DEFAULT_STATUS = "Lucid Raiding v1.0"
+    DEFAULT_STATUS = "ʟᴜᴄɪᴅ ʀᴀɪᴅɪɴɢ™ sᴇʟғʙᴏᴛ ᴠ1.0"
     DEFAULT_ACTIVITY_TYPE = "streaming"  # playing, listening, watching, competing, streaming
     DEFAULT_ACTIVITY_URL = "https://www.twitch.tv/lucidraiding"
     
