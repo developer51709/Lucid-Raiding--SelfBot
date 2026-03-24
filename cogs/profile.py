@@ -8,123 +8,9 @@ import discord
 from discord.ext import commands
 import aiohttp
 import asyncio
-from config import TOKEN
+import config
 
-
-
-DEFAULT_TITLES = [
-    "The Curse Of War",
-    "The Curse Of Greed",
-    "The Curse Of Lust",
-    "The Curse Of Wrath",
-    "The Curse Of Pride",
-    "The Curse Of Envy",
-    "The Curse Of Death",
-    "The Curse Of Life",
-    "The Curse Of Love",
-    "The Curse Of Hate"
-]
-
-bios = [
-    "**#cursed**",
-    "Probably Rate Limited",
-    "alt account: @hgrm",
-    "Coding The Worlds Best Selfbot As We Speak.                                                                    https://discord.gg/znZRS5DkGM"
-]
-
-statuses = [
-    "#cursed",
-    "#vile",
-    "#purge",
-    "#slice",
-    "#burn",
-    "#vault",
-    "#rebirthed",
-    "Coding The Worlds Best Selfbot As We Speak."
-]
-
-headers = {
-    "authorization": TOKEN,
-    "content-type": "application/json",
-    "user-agent": "Mozilla/5.0"
-}
-
-
-class Profile(commands.Cog):
-    def __init__(self, bot):
-        self.bot = bot
-        self.bio_task = None
-        self.status_task = None
-        self.clan_task = None
-        self.streaming_task = None
-
-
-    async def bio_rotator(self, bio_list):
-        headers = {
-            "authorization": TOKEN,
-            "content-type": "application/json"
-        }
-
-        async with aiohttp.ClientSession(headers=headers) as session:
-            try:
-                while True:
-                    for bio in bio_list:
-
-                        async with session.patch(
-                            "https://discord.com/api/v9/users/@me/profile",
-                            json={"bio": bio}
-                        ):
-                            pass
-
-                        await asyncio.sleep(5)
-
-            except asyncio.CancelledError:
-                pass
-
-
-    @commands.command(name="bio", aliases=["rbio", "rotatebio"])
-    async def biorotate(self, ctx, *, bio_input: str = None):
-        global bio_task
-
-        if bio_task and not bio_task.done():
-            await ctx.send("Bio Rotator Already Running")
-            return
-
-
-        if bio_input:
-            bio_list = [b.strip() for b in bio_input.split(",") if b.strip()]
-        else:
-            bio_list = bios
-
-        self.bio_task = asyncio.create_task(self.bio_rotator(bio_list))
-
-        await ctx.send(f"Bio Rotator Started ({len(bio_list)} bios)")
-
-
-    @commands.command(name="stopbio", aliases=["srbio", "stoprbio", "sbio"])
-    async def stopbio(self, ctx):
-        global bio_task
-... (173 lines left)
-
-profile.py
-9 KB
-its got a status, bio and stream rotator
-and a hypesquad badge changer
-! - 𝑵𝒚𝒙𝒆𝒏 [ＡＲＸ],  — 3/20/26, 7:17 AM
-oh cool
-cursecurse [AMMO],  — 3/20/26, 9:11 AM
-yeah sorry for not doing heaps. i had a lot of irl stuff pop up so i can only do a little bit of coding in between life shit
- [AMMO], 
-! - 𝑵𝒚𝒙𝒆𝒏 [ＡＲＸ],  — 3/20/26, 11:19 AM
-that is ok
-i have had a lot going on as well lately
-import discord
-from discord.ext import commands
-import aiohttp
-import asyncio
-from config import TOKEN
-
-
+TOKEN = config.config.discord_token
 
 DEFAULT_TITLES = [
     "The Curse Of War",
@@ -255,7 +141,7 @@ class Profile(commands.Cog):
             pass
 
 
-    @commands.command(name="status", aliases=["rstatus", "rotatestatus"])
+    @commands.command(name="statusrotate", aliases=["rstatus", "rotatestatus"])
     async def status(self, ctx, *, status_input: str = None):
         global status_task
         await ctx.message.delete()
