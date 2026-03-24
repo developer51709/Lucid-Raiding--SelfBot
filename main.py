@@ -203,7 +203,8 @@ async def set_bot_status(bot):
     activity = discord.Activity(
         type=activity_enum, 
         name=config.status,
-        url=config.activity_url if activity_type == "streaming" else None
+        url=config.activity_url if activity_type == "streaming" else None,
+        application_id=1482024559124287582
     )
     
     await bot.change_presence(activity=activity)
