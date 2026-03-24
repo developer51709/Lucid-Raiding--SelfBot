@@ -1,5 +1,6 @@
 {
   "prefix": "!",
   "status": "Lucid Raiding v1.0",
-  "activity_type": "playing"
+  "activity_type": "streaming",
+  "activity_url": "https://www.twitch.tv/yourchannel",
 }

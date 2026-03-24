@@ -14,13 +14,15 @@ class Config:
     # Defaults
     DEFAULT_PREFIX = "!"
     DEFAULT_STATUS = "Lucid Raiding v1.0"
-    DEFAULT_ACTIVITY_TYPE = "playing"  # playing, listening, watching, competing
+    DEFAULT_ACTIVITY_TYPE = "streaming"  # playing, listening, watching, competing, streaming
+    DEFAULT_ACTIVITY_URL = "https://www.twitch.tv/lucidraiding"
     
     def __init__(self):
         self.prefix = os.environ.get("PREFIX", self.DEFAULT_PREFIX)
         self.discord_token = os.environ.get("DISCORD_TOKEN")
         self.status = os.environ.get("BOT_STATUS", self.DEFAULT_STATUS)
         self.activity_type = os.environ.get("ACTIVITY_TYPE", self.DEFAULT_ACTIVITY_TYPE).lower()
+        self.activity_url = os.environ.get("ACTIVITY_URL", self.DEFAULT_ACTIVITY_URL)
         
         # Load from config.json if it exists
         self._load_from_file()
@@ -37,6 +39,7 @@ class Config:
                 self.prefix = data.get("prefix", self.prefix)
                 self.status = data.get("status", self.status)
                 self.activity_type = data.get("activity_type", self.activity_type)
+                self.activity_url = data.get("activity_url", self.activity_url)
                 
                 gradient_log(
                     (0, 255, 255),

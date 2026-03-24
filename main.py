@@ -196,10 +196,15 @@ async def set_bot_status(bot):
         "listening": discord.ActivityType.listening,
         "watching": discord.ActivityType.watching,
         "competing": discord.ActivityType.competing,
+        "streaming": discord.ActivityType.streaming,
     }
     
     activity_enum = activity_map.get(activity_type, discord.ActivityType.playing)
-    activity = discord.Activity(type=activity_enum, name=config.status)
+    activity = discord.Activity(
+        type=activity_enum, 
+        name=config.status,
+        url=config.activity_url if activity_type == "streaming" else None
+    )
     
     await bot.change_presence(activity=activity)
     gradient_log(
