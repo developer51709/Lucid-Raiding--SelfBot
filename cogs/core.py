@@ -11,7 +11,7 @@ class Core(commands.Cog):
     
     def __init__(self, bot):
         self.bot = bot
-        self.help_banner = "**「ʟᴜᴄɪᴅ ʀᴀɪᴅɪɴɢ™ sᴇʟғʙᴏᴛ ᴠ1.0」**\n\n"
+        self.help_banner = "**[「ʟᴜᴄɪᴅ ʀᴀɪᴅɪɴɢ™ sᴇʟғʙᴏᴛ ᴠ1.0」](<https://github.com/developer51709/Lucid-Raiding--SelfBot>)**\n\n"
     
     @commands.command(name="ping", help="Show the SelfBot's ping")
     async def ping(self, ctx):
@@ -41,7 +41,7 @@ class Core(commands.Cog):
             # Build help for specific command
             help_text = self.help_banner
             prefix = ctx.clean_prefix
-            help_text += f"**⪼** `{prefix}{cmd.name}`"
+            help_text += f"**⪼** [`{prefix}{cmd.name}`](<https://github.com/developer51709/Lucid-Raiding--SelfBot>)"
             
             if cmd.help:
                 help_text += f" — {cmd.help}"
@@ -77,7 +77,7 @@ class Core(commands.Cog):
         # Format commands
         prefix = ctx.clean_prefix
         for cmd_name, cmd_help in commands_list:
-            help_text += f"**⪼** `{prefix}{cmd_name}`\n-# {cmd_help}\n\n"
+            help_text += f"**⪼** [`{prefix}{cmd_name}`](<https://github.com/developer51709/Lucid-Raiding--SelfBot>)\n-# {cmd_help}\n\n"
         
         # Split into chunks if message is too long
         if len(help_text) > 2000:
@@ -85,7 +85,7 @@ class Core(commands.Cog):
             current_chunk = self.help_banner
             
             for cmd_name, cmd_help in commands_list:
-                line = f"**⪼** `{prefix}{cmd_name}`\n-# {cmd_help}\n\n"
+                line = f"**⪼** [`{prefix}{cmd_name}`](<https://github.com/developer51709/Lucid-Raiding--SelfBot>)\n-# {cmd_help}\n\n"
                 if len(current_chunk) + len(line) > 1900:
                     chunks.append(current_chunk)
                     current_chunk = self.help_banner + line
