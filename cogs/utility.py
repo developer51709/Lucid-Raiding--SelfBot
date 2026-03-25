@@ -96,9 +96,10 @@ class Utility(commands.Cog):
         
         try:
             deleted = await ctx.channel.purge(limit=count)
-            await ctx.send(f"Deleted {len(deleted)} message(s).")
+            await ctx.send(f"Deleted {len(deleted)} message(s).", delete_after=5)
         except discord.HTTPException as e:
-            await ctx.send(f"Failed to clear messages: {e}")
+            # skip the message if there if an error
+            pass
     
     @commands.command(name="avatar", help="Change bot avatar")
     async def avatar(self, ctx, *, image_url: str = None):
