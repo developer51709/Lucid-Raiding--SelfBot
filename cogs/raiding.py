@@ -20,22 +20,36 @@ class Raiding(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="ghostping", help="Ghost ping a user (delete immediately)")
+    @commands.group(name="raiding", invoke_without_command=True, help="Raiding commands")
+    async def raiding(self, ctx):
+        """Raiding command group."""
+        await ctx.send(f"Use `{ctx.clean_prefix}raiding help` for available commands.")
+
+    @raiding.command(name="help", help="Show raiding command help")
+    async def raiding_help(self, ctx):
+        """Show help for raiding commands."""
+        help_text = "**Raiding Commands:**\n"
+        help_text += f"`{ctx.clean_prefix}raiding ghostping <user>` - Ghost ping a user\n"
+        help_text += f"`{ctx.clean_prefix}raiding spam <count> <message>` - Spam a message\n"
+        help_text += f"`{ctx.clean_prefix}raiding raid <count>` - Spam the raid message\n"
+        await ctx.send(help_text)
+    @raiding.command(name="ghostping", help="Ghost ping a user (delete immediately)")
     async def ghostping(self, ctx, user: discord.User):
         """Send a ghost ping to a user (message deletes after mention)."""
         try:
             await ctx.message.delete()
         except discord.Forbidden:
             pass
-        
-        try:
-            msg = await ctx.send(f"{user.mention}")
-            await msg.delete()
-        except discord.HTTPException as e:
-            await ctx.send(f"Failed to send ghost ping: {e}")
+
+        for _ in range(10):
+            try:
+                msg = await ctx.send(f"{user.mention}")
+                await msg.delete()
+            except discord.HTTPException as e:
+                pass
 
     
-    @commands.command(name="spam", help="Spam a message multiple times")
+    @raiding.command(name="spam", help="Spam a message multiple times")
     async def spam(self, ctx, count: int, *, message: str):
         """Spam a message multiple times (be careful!)."""
         try:
@@ -58,7 +72,7 @@ class Raiding(commands.Cog):
             await ctx.send(f"Failed to spam: {e}")
 
 
-    @commands.command(name="raid", help="Spam the raid message in the current channel")
+    @raiding.command(name="raid", help="Spam the raid message in the current channel")
     async def raid(self, ctx, count: int = 10):
         """Spam the raid message in the current channel."""
         try:
