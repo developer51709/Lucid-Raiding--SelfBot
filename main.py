@@ -6,10 +6,17 @@
 - 𝙲𝚞𝚛𝚜𝚎𝚏𝚒𝚕𝚎
 ───────────────────────────
 𝙻𝚒𝚗𝚔𝚜:
-- 𝙶𝚒𝚝𝙷𝚞𝚋:
+- 𝙶𝚒𝚝𝙷𝚞𝚋s:
 https://github.com/developer51709/Lucid-Raiding--SelfBot
-- 𝙳𝚒𝚜𝚌𝚘𝚛𝚍:
+^^Nyxen^^
+https://github.com/69v5
+^^cursefile^^
+
+- Support 𝙳𝚒𝚜𝚌𝚘𝚛𝚍s:
 https://discord.gg/k7DWBCsRHC
+^^Nyxen^^
+https://discord.gg/ammo
+^^cursefile^^
 ───────────────────────────
 """
 
