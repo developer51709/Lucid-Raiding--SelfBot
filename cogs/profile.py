@@ -1,7 +1,22 @@
 """
 Profile cog: Rotate bios, statuses, and stream titles.
 
-Special thanks to @cursefile for making this cog.
+Special thanks to @cursefile (on discord) for making this cog.
+
+^^from nyxen^^
+
+btw the stream command has 2 functions, it can be used like:
+",stream" to rotate through the DEFAULT_TITLES
+OR
+",stream [custom title1], [custom title2], etc" 
+if you dont want to use your default titles.
+
+ALSO
+same thing for the bio and status command
+either: 
+",bio/status" or ",bio/status [text1], [text2], etc"
+
+^^from cursefile^^
 """
 
 import discord
@@ -13,34 +28,24 @@ import config
 TOKEN = config.config.discord_token
 
 DEFAULT_TITLES = [
-    "The Curse Of War",
-    "The Curse Of Greed",
-    "The Curse Of Lust",
-    "The Curse Of Wrath",
-    "The Curse Of Pride",
-    "The Curse Of Envy",
-    "The Curse Of Death",
-    "The Curse Of Life",
-    "The Curse Of Love",
-    "The Curse Of Hate"
+    "title1",
+    "title2",
+    "title3",
+    "etc"
 ]
 
 bios = [
-    "**#cursed**",
-    "Probably Rate Limited",
-    "alt account: @hgrm",
-    "Coding The Worlds Best Selfbot As We Speak.                                                                    https://discord.gg/znZRS5DkGM"
+    "bio text1",
+    "bio text2",
+    "bio text3",
+    "etc"
 ]
 
 statuses = [
-    "#cursed",
-    "#vile",
-    "#purge",
-    "#slice",
-    "#burn",
-    "#vault",
-    "#rebirthed",
-    "Coding The Worlds Best Selfbot As We Speak."
+    "status text1",
+    "status text2",
+    "status text 3",
+    "etc"
 ]
 
 headers = {
