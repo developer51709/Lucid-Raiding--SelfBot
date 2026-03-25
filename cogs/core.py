@@ -77,7 +77,7 @@ class Core(commands.Cog):
         # Format commands
         prefix = ctx.clean_prefix
         for cmd_name, cmd_help in commands_list:
-            help_text += f"**⪼** `{prefix}{cmd_name}`\n-# {cmd_help}\n"
+            help_text += f"**⪼** `{prefix}{cmd_name}`\n-# {cmd_help}\n\n"
         
         # Split into chunks if message is too long
         if len(help_text) > 2000:
@@ -85,7 +85,7 @@ class Core(commands.Cog):
             current_chunk = self.help_banner
             
             for cmd_name, cmd_help in commands_list:
-                line = f"**⪼** `{prefix}{cmd_name}`\n-# {cmd_help}\n"
+                line = f"**⪼** `{prefix}{cmd_name}`\n-# {cmd_help}\n\n"
                 if len(current_chunk) + len(line) > 1900:
                     chunks.append(current_chunk)
                     current_chunk = self.help_banner + line
